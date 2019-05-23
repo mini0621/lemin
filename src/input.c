@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 15:13:37 by mnishimo          #+#    #+#             */
-/*   Updated: 2019/05/23 16:41:54 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/05/23 18:27:06 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ static int	store_edges(t_tnode **top, char *line)
 	print_free(line);
 	err = (add_edge(top, split) == -1) ? 1 : 0;
 	ft_deltab(split);
+	if (err)
+		return (0);
 	while (!err && (ignore_comment_gnl(&line)) == 1)
 	{
 		split = ft_strsplit(line, '-');

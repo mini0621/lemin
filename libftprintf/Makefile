@@ -24,7 +24,7 @@ FTSRC = ft_lstiter.c    ft_putchar.c    ft_strdel.c     ft_strnew.c  ft_lstlast.
 		ft_lstdelof.c ft_strjoinfree.c ft_strupper.c ft_strndup.c ft_strsubfree.c \
 		ft_atozu.c		ft_max.c ft_deltab.c get_next_line.c ft_min.c ft_lstsort.c \
 		ft_atollu.c ft_qappend.c ft_qnew.c ft_qpop.c ft_qdel.c  \
-		ft_qpush.c ft_lstsub.c ft_lstinsert.c ft_qclear.c
+		ft_qpush.c ft_lstsub.c ft_lstinsert.c ft_qclear.c ft_lstnomallocnew.c
 
 FTIOSRC=$(addprefix ft_printf/, ft_printf.c convertion.c setting.c process_csp.c \
 		fraction.c process_ld.c \
@@ -32,7 +32,7 @@ FTIOSRC=$(addprefix ft_printf/, ft_printf.c convertion.c setting.c process_csp.c
 		process_doux.c ft_lltoa.c process_e.c process_f.c process_flag.c 		 \
 		 ft_sprintf.c ft_dprintf.c ft_asprintf.c ft_snprintf.c)
 
-FTAVLSRC=$(addprefix avlsrc/,	ft_avladd.c	ft_avlfind.c				\
+FTAVLSRC=$(addprefix avlsrc/,	ft_avladd.c	ft_avlfind.c	ft_avlnomallocnew.c	\
 		ft_avlheight.c	ft_avlnew.c		ft_treedel.c	lrotate.c      rrotate.c)
 
 FTIOOBJ=$(FTIOSRC:.c=.o)

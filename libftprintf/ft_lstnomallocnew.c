@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_qdel.c                                          :+:      :+:    :+:   */
+/*   ft_lstnomallocnew.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnishimo <mnishimo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/16 16:07:21 by mnishimo          #+#    #+#             */
-/*   Updated: 2019/05/25 15:50:01 by mnishimo         ###   ########.fr       */
+/*   Created: 2018/11/27 22:12:04 by mnishimo          #+#    #+#             */
+/*   Updated: 2019/05/25 14:39:15 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_qdel(t_queue **q, void (*del)(void *, size_t))
+t_list	*ft_lstnomallocnew(void const *content, size_t content_size)
 {
-	if (!q || !(*q))
-		return ;
-	ft_lstdel(&((*q)->top), del);
-	(*q)->last = NULL;
-	free(*q);
-	*q = NULL;
+	t_list	*ptr;
+
+	if (!(ptr = ft_lstnew(NULL, 0)))
+		return (NULL);
+	ptr->content = (void *)content;
+	ptr->content_size = content_size;
+	return (ptr);
 }

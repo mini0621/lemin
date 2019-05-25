@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:20:14 by sunakim           #+#    #+#             */
-/*   Updated: 2019/05/20 10:36:01 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/05/25 15:18:02 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_tnode
 }				t_tnode;
 
 t_tnode			*ft_avlnew(void const *content, size_t contentsize);
+t_tnode			*ft_avlnomallocnew(void const *content);
 t_tnode			*ft_avladd(t_tnode **root, t_tnode *new,
 				int (*cmp)(void *, void *), void (*del)(void *));
 int				height (t_tnode *n);

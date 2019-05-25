@@ -6,7 +6,7 @@
 /*   By: mnishimo <mnishimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 00:03:56 by mnishimo          #+#    #+#             */
-/*   Updated: 2019/05/20 18:27:24 by mnishimo         ###   ########.fr       */
+/*   Updated: 2019/05/25 15:58:37 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ static t_list	*read_a_flow(t_path *p, t_lemin *lemin)
 			return (NULL);
 		}
 	}
-	if (!(c = ft_lstnew(NULL, sizeof(t_path *))))
+	if (!(c = ft_lstnomallocnew((void *)p, sizeof(t_path *))))
 	{
 		del_path(p);
 		return (NULL);
 	}
-	c->content = (void *)p;
-	c->next = NULL;
 	return (c);
 }
 
@@ -117,11 +115,10 @@ t_list			*se_connected(t_lemin *lemin)
 		return (NULL);
 	if (!(p = init_path(lemin->e)))
 		return (NULL);
-	if (!(cur = ft_lstnew(NULL, sizeof(t_path *))))
+	if (!(cur = ft_lstnomallocnew((void *)p, sizeof(t_path *))))
 	{
 		del_path(p);
 		return (NULL);
 	}
-	cur->content = p;
 	return (cur);
 }

@@ -6,7 +6,7 @@
 /*   By: mnishimo <mnishimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 22:08:31 by mnishimo          #+#    #+#             */
-/*   Updated: 2019/05/21 17:53:16 by mnishimo         ###   ########.fr       */
+/*   Updated: 2019/05/25 14:47:41 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,13 @@ int				add_edge(t_tnode **top, char **split)
 			|| !(r = ft_avlfind(*top, split[1], &cmptnode_withname))
 			|| l == r || is_dup((t_room *)(l->cnt), (t_room *)(r->cnt)))
 		return (-1);
-	if (!(n = ft_lstnew(NULL, sizeof(t_edge *))))
+	if (!(n = ft_lstnomallocnew((void *)(edge_new(l->cnt)),
+					sizeof(t_edge *))))
 		return (-1);
-	n->content = edge_new(l->cnt);
 	tmp = (t_edge *)(n->content);
 	ft_lstadd(&(((t_room *)(r->cnt))->edge), n);
-	if (!(n = ft_lstnew(NULL, sizeof(t_edge *))))
+	if (!(n = ft_lstnomallocnew(edge_new(r->cnt), sizeof(t_edge *))))
 		return (-1);
-	n->content = edge_new(r->cnt);
 	((t_edge *)(n->content))->inverse = tmp;
 	tmp->inverse = (t_edge *)(n->content);
 	ft_lstadd(&(((t_room *)(l->cnt))->edge), n);

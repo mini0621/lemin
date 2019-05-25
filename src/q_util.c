@@ -6,7 +6,7 @@
 /*   By: mnishimo <mnishimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 22:47:04 by mnishimo          #+#    #+#             */
-/*   Updated: 2019/05/18 18:17:28 by mnishimo         ###   ########.fr       */
+/*   Updated: 2019/05/25 14:34:04 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ int	q_addstart(t_room *start, t_queue *q)
 	if (!q || !start)
 		return (-1);
 	ft_qclear(&q, NULL);
-	if (!(nl = ft_lstnew(NULL, sizeof(t_room *))))
+	if (!(nl = ft_lstnomallocnew((void *)start, sizeof(t_room *))))
 		return (-1);
-	nl->content = start;
 	if (!ft_qappend(q, nl))
 	{
 		free(nl);

@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:53:27 by mnishimo          #+#    #+#             */
-/*   Updated: 2019/05/20 15:32:00 by mnishimo         ###   ########.fr       */
+/*   Updated: 2019/05/25 15:40:07 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,18 @@ t_room				*add_newroom(t_lemin *lemin, char **split)
 
 	if (!(nr = room_new(split)))
 		return (NULL);
-	if (!(nn = ft_avlnew(NULL, 0)))
+	if (!(nn = ft_avlnomallocnew(nr)))
 	{
 		free_room(nr);
 		return (NULL);
 	}
-	nn->cnt = nr;
 	if (!(ft_avladd(&(lemin->ntop), nn, &cmptnode_byname, &delroom)))
 		return (NULL);
-	if (!(nn = ft_avlnew(NULL, 0)))
+	if (!(nn = ft_avlnomallocnew(nr)))
+	{
+		delroom((void *)nr);
 		return (NULL);
-	nn->cnt = nr;
+	}
 	if (!(ft_avladd(&(lemin->ctop), nn, &cmptnode_bycoord, NULL)))
 		return (NULL);
 	return (nr);

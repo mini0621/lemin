@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 15:13:37 by mnishimo          #+#    #+#             */
-/*   Updated: 2019/05/23 18:27:06 by mnishimo         ###   ########.fr       */
+/*   Updated: 2019/05/25 15:54:40 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,22 @@ static int	ignore_comment_gnl(char **line)
 	while ((ret = get_next_line(0, line)) > 0)
 	{
 		if (!(**line))
-			return (-1);
-		if (*line && **line == '#')
 		{
-			if (!ft_strcmp(*line, "##start"))
-				return (2);
-			if (!ft_strcmp(*line, "##end"))
-				return (3);
-			if (*(*line + 1) == '#')
-				return (-1);
-			print_free(*line);
+			free(*line);
+			return (-1);
 		}
-		else
+		if (**line == '#' && !ft_strcmp(*line, "##start"))
+			return (2);
+		if (**line == '#' && !ft_strcmp(*line, "##end"))
+			return (3);
+		if (**line == '#' && *(*line + 1) == '#')
+		{
+			free(*line);
+			return (-1);
+		}
+		if (**line != '#')
 			return (1);
+		print_free(*line);
 	}
 	return (ret);
 }
@@ -41,6 +44,8 @@ static int	nbr_ants(t_lemin *lemin, char *line)
 	int i;
 
 	i = 0;
+	if (!line)
+		return (-1);
 	while (line[i])
 	{
 		if (!ft_isdigit(line[i]) && line[i] != '+')
@@ -85,21 +90,26 @@ static int	store_edges(t_tnode **top, char *line)
 	int		err;
 	char	**split;
 
+	if (!line || *line == '-')
+		return (0);
 	split = ft_strsplit(line, '-');
 	print_free(line);
 	err = (add_edge(top, split) == -1) ? 1 : 0;
 	ft_deltab(split);
 	if (err)
-		return (0);
+		return (-1);
 	while (!err && (ignore_comment_gnl(&line)) == 1)
 	{
+		if (!line || *line == '-')
+		{
+			print_free(line);
+			return (0);
+		}
 		split = ft_strsplit(line, '-');
 		print_free(line);
 		err = (add_edge(top, split) == -1) ? 1 : 0;
 		ft_deltab(split);
 	}
-	if (err)
-		ft_printf("ERROR\n");
 	return (0);
 }
 

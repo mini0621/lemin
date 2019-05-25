@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_qdel.c                                          :+:      :+:    :+:   */
+/*   ft_avlnomallocnew.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnishimo <mnishimo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/16 16:07:21 by mnishimo          #+#    #+#             */
-/*   Updated: 2019/05/25 15:50:01 by mnishimo         ###   ########.fr       */
+/*   Created: 2019/03/25 11:41:40 by sunakim           #+#    #+#             */
+/*   Updated: 2019/05/25 15:18:54 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../includes/ft_avl.h"
 
-void	ft_qdel(t_queue **q, void (*del)(void *, size_t))
+t_tnode	*ft_avlnomallocnew(void const *content)
 {
-	if (!q || !(*q))
-		return ;
-	ft_lstdel(&((*q)->top), del);
-	(*q)->last = NULL;
-	free(*q);
-	*q = NULL;
+	t_tnode *new;
+
+	if (!(new = ft_avlnew(NULL, 0)))
+		return (NULL);
+	new->cnt = (void *)content;
+	return (new);
 }

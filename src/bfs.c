@@ -6,7 +6,7 @@
 /*   By: mnishimo <mnishimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 23:12:42 by mnishimo          #+#    #+#             */
-/*   Updated: 2019/05/20 18:25:41 by mnishimo         ###   ########.fr       */
+/*   Updated: 2019/05/25 16:06:28 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,9 @@ static int	scan(t_room *room, t_queue *q, int v, int dir)
 		{
 			edge->room->label = room;
 			edge->room->scanned = v;
-			if ((nl = ft_lstnew(NULL, sizeof(t_room *))))
-			{
-				nl->content = edge->room;
+			if ((nl = ft_lstnomallocnew((void *)(edge->room),
+							sizeof(t_room *))))
 				ft_qappend(q, nl);
-			}
 			else
 				return (-1);
 		}
@@ -68,11 +66,15 @@ int			bfs(t_lemin *lemin, t_queue *q, int net_flow)
 	if (scan((t_room *)(rm->content), q, net_flow, 0) < 0)
 		return (0);
 	lemin->s->scanned = net_flow;
+	ft_lstdelone(&rm, NULL);
 	while ((rm = ft_qpop(q)))
 	{
 		room = (t_room *)(rm->content);
 		if (room == lemin->e)
+		{
+			ft_lstdelone(&rm, NULL);
 			return (1);
+		}
 		if (scan(room, q, net_flow, get_flow(room, net_flow)) < 0)
 		{
 			ft_lstdelone(&rm, NULL);
@@ -80,7 +82,5 @@ int			bfs(t_lemin *lemin, t_queue *q, int net_flow)
 		}
 		ft_lstdelone(&rm, NULL);
 	}
-	if (lemin->e->scanned != net_flow)
-		return (0);
-	return (1);
+	return ((lemin->e->scanned != net_flow) ? 0 : 1);
 }

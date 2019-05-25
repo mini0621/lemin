@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:46:24 by sunakim           #+#    #+#             */
-/*   Updated: 2019/05/22 16:27:58 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/05/25 16:20:31 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,6 @@ int			init_all(t_visu *vs, t_lemin *l)
 	if (!load_media(vs->text, vs->rndr))
 		return (0);
 	if (!init_lemin(l, vs))
-	{
-		done_free(vs->win, vs->text, vs->rndr);
 		return (0);
-	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:07:25 by mnishimo          #+#    #+#             */
-/*   Updated: 2019/05/23 15:40:08 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/05/25 16:49:42 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,18 @@ static void	visu(t_visu *vs, t_lemin *l)
 	}
 }
 
-int			main(int argc, char **argv)
+int			main(void)
 {
 	t_lemin	l;
 	t_visu	vs;
-	char	*theme;
 
-	if (argc != 1)
-	{
-		theme = argv[1];
-	}
 	if (!init_all(&vs, &l))
-		return (ft_error());
+		ft_error();
 	else
 		visu(&vs, &l);
+	vs.quit = 1;
 	del_lemin(&l);
 	done_free(vs.win, vs.text, vs.rndr);
+	while (1);
 	return (0);
 }

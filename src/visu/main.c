@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:07:25 by mnishimo          #+#    #+#             */
-/*   Updated: 2019/05/25 16:49:42 by mnishimo         ###   ########.fr       */
+/*   Updated: 2019/05/26 11:00:46 by mnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ int			main(void)
 	vs.quit = 1;
 	del_lemin(&l);
 	done_free(vs.win, vs.text, vs.rndr);
-	while (1);
 	return (0);
 }

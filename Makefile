@@ -6,7 +6,7 @@
 #    By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 21:22:06 by sunakim           #+#    #+#              #
-#    Updated: 2019/05/23 17:23:00 by mnishimo         ###   ########.fr        #
+#    Updated: 2019/05/26 10:59:02 by mnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ VISU_NAME = visu
 
 CC = gcc -g
 CFLAGS = -Wall -Werror -Wextra
-#CFLAGS = -fsanitize=address -g
 
 INCLUDES = -I ./includes -I libftprintf/includes `pkg-config --cflags sdl2`
 LDIR = -L libftprintf/ -lftprintf `pkg-config --libs sdl2` `pkg-config --libs sdl2_image` `pkg-config --libs sdl2_ttf`
@@ -30,7 +29,7 @@ OBJ = $(SRC:.c=.o)
 VISU_SRC = $(addprefix src/visu/, main.c  lemin_input.c  input.c lemin.c cmp.c draw_map.c init_visu.c load_visu.c util_visu.c free_visu.c  dot.c read_sol.c del_cp.c)
 VISU_OBJ = $(VISU_SRC:.c=.o)
 
-.PHONY: all fclean clean
+.PHONY: all fclean clean re
 
 RM = rm -f
 

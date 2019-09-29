@@ -19,12 +19,12 @@ Max flow algorithm, edmonds karp algorithm.
 ## requirements
 gcc 
 ### for visualizer
-pkgconfig, sdl2, sdl2_image
+pkgconfig, sdl2, sdl2_image, sdl2_ttf
 
 ## Usage
 #### to run
 ```
-./lemin < mapfile
+./lemin < example.map
 ```
 
 #### map file
@@ -41,10 +41,14 @@ endroom 2 2
 a-b  # connection between rooms
 ```
 
-## example
-
 ## visualizer
-
+```
+./lemin < example.map | ./visu
+```
+##### control
+→ : next step
+← : previous step
+space : play
 
 ## Author
 

@@ -19,7 +19,7 @@ Max flow algorithm, edmonds karp algorithm.
 ## requirements
 gcc 
 ### for visualizer
-pkgconfig, sdl2
+pkgconfig, sdl2, sdl2_image
 
 ## Usage
 #### to run

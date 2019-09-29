@@ -1,11 +1,11 @@
-# lemin
+# Lem-in
 42 project lemin
 Graph projects
 
 
 <img src="https://github.com/mini0621/lemin/blob/master/media/lemin.gif" width="80%">
 
-## description
+## Description
 Lemin is a graph/path project.  
 The program get a map of an ant nest and the number of ants from the standard input.  
 Then it will find the instruction to move all the ants from start node to the end node.  
@@ -13,18 +13,19 @@ All the rooms can hold exactly one ant, and no two ants can stay or cross the ro
 The ants will move one room to another by exactly one step.  
 
 
-## solution
+## Solution
 Max flow algorithm, edmonds karp algorithm.  
 
 ## requirements
 gcc   
   
-### for visualizer
+####  visualizer
 pkgconfig, sdl2, sdl2_image, sdl2_ttf  
 
 ## Usage
 #### to run
 ```
+make
 ./lemin < example.map
 ```
   
@@ -77,11 +78,12 @@ d-end
 ```
 ./lemin < example.map | ./visu
 ```
+  
 ##### control
 → : next step
 ← : previous step
 space : play
-
+  
 ## Author
 
 [Misaki Nishimoto](https://github.com/mini0621)  
